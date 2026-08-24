@@ -89,7 +89,7 @@ export default function AddBookmarkModal({
 
   return (
     <div className="modal-overlay" onClick={handleOverlayClick} id="add-bookmark-modal">
-      <div className="modal glass-card">
+      <div className="modal">
         <div className="modal-header">
           <h2>Add Bookmark</h2>
           <button

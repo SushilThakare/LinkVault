@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -37,18 +38,8 @@ export default function RegisterPage() {
       await register(username, email, password);
       navigate('/');
     } catch (err) {
-      if (
-        err &&
-        typeof err === 'object' &&
-        'response' in err &&
-        typeof (err as Record<string, unknown>).response === 'object' &&
-        (err as Record<string, { data?: { message?: string } }>).response?.data
-          ?.message
-      ) {
-        setError(
-          (err as Record<string, { data: { message: string } }>).response.data
-            .message
-        );
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || err.message || 'Registration failed. Please try again.');
       } else {
         setError('Registration failed. Please try again.');
       }
@@ -63,7 +54,7 @@ export default function RegisterPage() {
         <div className="auth-bg-glow auth-bg-glow-1" />
         <div className="auth-bg-glow auth-bg-glow-2" />
 
-        <div className="auth-card glass-card">
+        <div className="auth-card">
           <div className="auth-header">
             <div className="auth-logo">
               <svg

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { AuthResponse, Bookmark, CreateBookmarkPayload } from '../types';
 
-// Axios instance — Vite proxy handles /api → http://localhost:5000
+// Axios instance — Vite proxy handles /api → http://localhost:3001
 const api = axios.create({
   baseURL: '/api',
   headers: {

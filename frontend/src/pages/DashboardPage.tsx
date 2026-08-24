@@ -146,7 +146,7 @@ export default function DashboardPage() {
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                className="bookmark-skeleton glass-card"
+                className="bookmark-skeleton"
               >
                 <div className="skeleton skeleton-line skeleton-sm" />
                 <div className="skeleton skeleton-line skeleton-lg" />
